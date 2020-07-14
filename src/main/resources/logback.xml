@@ -31,16 +31,22 @@
             </timeBasedFileNamingAndTriggeringPolicy>
         </rollingPolicy>
     </appender>
+    <appender name="aiAppender"
+              class="com.microsoft.applicationinsights.logback.ApplicationInsightsAppender">
+        <instrumentationKey>96f99dbb-5eb2-4d11-a6bf-9a2f629e2da7</instrumentationKey>
+    </appender>
 
     <!-- LOG everything at INFO level -->
     <root level="info">
         <appender-ref ref="RollingFile" />
         <appender-ref ref="Console" />
+        <appender-ref ref="aiAppender" />
     </root>
 
     <logger name="com.gazgeek.helloworld" level="trace" additivity="false">
         <appender-ref ref="RollingFile" />
         <appender-ref ref="Console" />
+        <appender-ref ref="aiAppender" />
     </logger>
 
 </configuration>
